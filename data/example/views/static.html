@@ -1,0 +1,19 @@
+<%
+	var title = "My Blog - " + model.meta.title;
+	var head = { title: title };
+%>
+
+<!DOCTYPE html>
+<html>
+	<% print(view("page/head.html").render(head)); %>
+	<body>
+		<% print(view("page/header.html").render()); %>
+		<main>
+			<div class="static">
+				<h1><% print(model.meta.title); %></h1>
+				<div class="content"><% print(markdown(model.content)); %></div>
+			</div>
+		</main>
+		<% print(view("page/footer.html").render()); %>
+	</body>
+</html>

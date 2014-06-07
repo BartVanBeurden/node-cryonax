@@ -1,0 +1,27 @@
+<%
+	var docs = documents()
+		.filter(function(doc) { return doc.meta.type == "blog"; })
+		.sort(function(a, b) { return b.meta.date - a.meta.date; })
+		.slice(0, 5);
+%>
+<footer>
+
+	<section>
+		<h2>Recent</h2>
+		<ul class="no-decoration">
+			<% docs.forEach(function(doc) { %>
+			<li><% print(view("blog/link-article.html").render(doc)); %></li>
+			<% }); %>
+		</ul>
+	</section>
+	
+	<section>
+		<h2>About</h2>
+		<div>
+				Bart Van Beurden
+			<br>Antwerpen
+			<br><a href="mailto:vanbeurden.bart@gmail.com">vanbeurden.bart@gmail.com</a>
+		</div>
+	</section>
+	
+</footer>

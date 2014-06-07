@@ -1,0 +1,152 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+
+* {
+	margin: 0;
+	padding: 0;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	color: inherit;
+}
+
+html,
+body {
+	width: 100%;
+	min-height: 100vh;
+	cursor: default;
+}
+
+body {
+	font-family: Open Sans Condensed, Arial, Verdana, sans-serif;
+	display: flex;
+	flex-direction: column;
+}
+
+header,
+main,
+footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 100%;
+	font-size: 1.25em;
+}
+
+main {
+	flex: 1;
+}
+
+p {
+	padding: 0.5em 0 0.5em 0;
+}
+
+a {
+	text-decoration: none;
+	border-bottom-style: dotted;
+	border-bottom-width: 1px;
+}
+
+ul.horizontal,
+ol.horizontal {
+	display: flex;
+	flex-direction: row;
+	list-style-type: none;
+	flex-wrap: wrap;
+}
+
+ul.no-decoration,
+ol.no-decoration {
+	list-style-type: none;
+}
+
+/*
+	HEADER
+*/
+header {
+	background-color: #3C74B1;
+	color: white;
+	text-shadow: 1px 1px 0 black;
+	cursor: default;
+	border-bottom: 1px solid #2962A0;
+}
+
+header h1,
+header a {
+	font-size: 1em;
+	padding: 1em;
+	display: inline-block;
+	border: 0;
+}
+
+header a:hover {
+	background-color: #2962A0;
+	color: white;
+}
+
+/*
+	FOOTER
+*/
+footer {
+	background-color: #CCC;
+	border-top: 1px solid #AAA;
+	padding: 1em;
+	text-shadow: 1px 1px 0 #DDD;
+}
+
+footer section {
+	width: 15em;
+	padding: 0 1em 0 1em;
+}
+
+footer section h2 {
+	border-bottom: 1px solid #AAA;
+}
+
+/*
+	MAIN
+*/
+main {
+	padding: 2em;
+	font-size: 1.5em;
+}
+
+main h1 {
+	border-bottom: 1px solid #AAA;
+}
+
+.blog-post {
+	max-width: 30em;
+	text-align: justify;
+}
+
+.blog-post .labels {
+	display: inline-flex;
+}
+
+.blog-post .labels a {
+	margin: 0 0.25em 0 0.25em;
+}
+
+.blog-post .about {
+	padding: 0.25em 0 0.25em 0;
+	margin: 0.5em 0 0.5em 0;
+	border-top: 1px solid #AAA;
+	border-bottom: 1px solid #AAA;
+}
+
+.blog-year-index .tiles>li {
+	min-width: 10em;
+}
+
+.blog-index .tiles {
+	justify-content: center;
+}
+
+.blog-index .tiles>li {
+	width: 20em;
+	padding: 1em;
+	text-align: justify;
+}
+
+.blog-index .year.tiles>li {
+	width: auto;
+}

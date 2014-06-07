@@ -1,0 +1,27 @@
+{
+	"name": "cryonax",
+	"version": "0.1.6",
+	"description": "static html site generator",
+	"main": "index.js",
+	"bin": {
+		"cryonax": "./bin/cli.js"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"commander": "*",
+		"promptly": "*",
+		"showdown": "*",
+		"fs-extra": "*",
+		"require-like": "*",
+		"oo-native-ext": "*"
+	},
+	"keywords": [
+		"cryonax",
+		"static",
+		"site"
+	],
+	"author": "Bart Van Beurden",
+	"license": "WTFPL"
+}

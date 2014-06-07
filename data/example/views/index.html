@@ -1,0 +1,46 @@
+<%
+	var title = "My Blog";
+	var docs = documents()
+		.filter(function(doc) { return doc.meta.type == "blog"; })
+		.sort(function(a, b) { return b.meta.date - a.meta.date; })
+		.slice(0, 10);
+		
+	var years = documents()
+		.filter(function(doc) { return doc.meta.type == "blog"; })
+		.reduce(function(years, doc) {
+			if (years.indexOf(doc.meta.date.getFullYear()) == -1)
+				years.push(doc.meta.date.getFullYear());
+			return years;
+		}, [])
+		.sort(function(a, b) { return a - b; });
+	
+	var head = { title: title }
+%>
+
+<!DOCTYPE html>
+<html>
+	<% print(view("page/head.html").render(head)); %>
+	<body>
+		<% print(view("page/header.html").render()); %>
+		<main>
+			<div class="blog-index">
+				<h1>Recent posts</h1>
+				<ul class="horizontal tiles">
+					<% docs.forEach(function(doc) { %>
+						<li>
+							<h2><% print(view("blog/link-article.html").render(doc)); %></h2>
+							<div class="summary"><% print(summary(markdown(doc.content), 250, "[...]")); %></div>
+						</li>
+					<% }); %>
+				</ul>
+				<h1>Archive</h1>
+				<ul class="horizontal year tiles">
+					<% years.forEach(function(year) { %>
+						<li><h2><a href="/blog/<% print(year); %>"><% print(year); %></a></h2></li>
+					<% }); %>
+				</ul>
+			</div>
+		</main>
+		<% print(view("page/footer.html").render()); %>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<%
+	var title = "My Blog - " + model;
+	var docs = documents()
+		.filter(function(doc) { return doc.meta.type == "blog"; })
+		.filter(function(doc) { return doc.meta.labels.indexOf(model) != -1; });
+	
+	var head = { title: title }
+%>
+
+<!DOCTYPE html>
+<html>
+	<% print(view("page/head.html").render(head)); %>
+	<body>
+		<% print(view("page/header.html").render()); %>
+		<main>
+			<div class="blog-label-index">
+				<h1><% print(model); %></h1>
+				<ul class="no-decoration">
+					<% docs.forEach(function(doc) { %>
+						<li><% print(view("blog/link-article.html").render(doc)); %></li>
+					<% }); %>
+				</ul>
+			</div>
+		</main>
+		<% print(view("page/footer.html").render()); %>
+	</body>
+</html>
