@@ -2,7 +2,5 @@
 	Example build script for a blog
 */
 
-var noise = require("noise");
-
 // render index page
-noise.save("index.html", noise.view("index.html").render(noise.document("index.md")));
+save("index.html", view("index.html").render(document("index.md")));

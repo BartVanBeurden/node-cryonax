@@ -36,9 +36,9 @@
 					</div>
 				</article>
 				<div class="controls">
-					<% if (prev) { %><a title="<% print(prev.meta.title); %>" href="/<% print(prev.path.replace(/\..+$/, "")); %>">Previous</a><% } %>
-					<a href="/blog">Home</a>
-					<% if (next) { %><a title="<% print(next.meta.title); %>" href="/<% print(next.path.replace(/\..+$/, "")); %>">Next</a><% } %>
+					<% if (prev) { %><a title="<% print(prev.meta.title); %>" href="/<% print(prev.path.replace(/\..+$/, "")); %>/">Previous</a><% } %>
+					<a href="/blog/">Home</a>
+					<% if (next) { %><a title="<% print(next.meta.title); %>" href="/<% print(next.path.replace(/\..+$/, "")); %>/">Next</a><% } %>
 				</div>
 			</div>
 		</main>
