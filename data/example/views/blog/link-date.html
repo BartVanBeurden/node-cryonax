@@ -1,1 +1,1 @@
-<a href="/blog/<% print(model.format("{yyyy}")); %>/"><% print(model.format("{dd} {MMMM} {yyyy}")); %></a>
+<a href="<% print(url("blog/" + model.format("{yyyy}"))); %>/"><% print(model.format("{dd} {MMMM} {yyyy}")); %></a>

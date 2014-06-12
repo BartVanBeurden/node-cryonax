@@ -10,7 +10,7 @@ var cryonax = require("../index.js");
 	program
 **/
 program
-	.version("0.1.6")
+	.version("0.1.8")
 	.usage("<command> [options]");
 	
 /**
@@ -21,7 +21,9 @@ program.command("init")
 	.description("initialize a new website")
 	.option("-o, --output <path>", "Path to the website directory, defaults to .")
 	.action(function() {
-		cryonax.init(program.output || process.cwd());
+		promptly.prompt("url:", function(url) {
+			cryonax.init(program.output || process.cwd(), url);
+		});
 	});
 
 /**
@@ -43,12 +45,12 @@ program.command("build")
 	.description("build a website")
 	.option("-i, --input <path>", "Path to the website directory, defaults to .")
 	.option("-o, --output <path>", "Path to the output directory, defaults to ./out")
-	.option("-url, --url <root>", "Path to the root URL")
+	.option("-url, --url <root>", "Path to the root URL, defaults to /")
 	.action(function() {
 		cryonax.build(
 			program.input || process.cwd(),
 			program.output || path.join(process.cwd(), "./out"),
-			{ url: program.url || "" }
+			{ url: program.url || "/" }
 		);
 	});
 	
