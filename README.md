@@ -53,11 +53,15 @@ In addition to regular JSON data types, you can use "Date()" to create a Date ob
 
 A cryonax view is a HTML template with embedded javascript in `<%` and `%>` tags.
 
-	<h1><% print(model.meta.title); %></h1>
+```html
+<h1><% print(model.meta.title); %></h1>
+```
 	
 is rendered as
 
-	<h1>First entry!</h1>
+```html
+<h1>First entry!</h1>
+```
 
 # Build Script
 
@@ -71,7 +75,9 @@ The cryonax build script is named "build.js" and contains instructions to genera
 
 Retrieve a document by path
 
-	var doc = document("blog/2014/first-post.md");
+```javascript
+var doc = document("blog/2014/first-post.md");
+```
 	
 ### Properties
 
@@ -83,14 +89,18 @@ Retrieve a document by path
 
 Retrieve all documents
 
-	var articles = documents()
-		.filter(function(doc) { return doc.meta.type == "blog"; });
+```javascript
+var articles = documents()
+	.filter(function(doc) { return doc.meta.type == "blog"; });
+```
 		
 ## view(path)
 
 Retrieve a view by path
 
-	var template = view("blog/article.html");
+```javascript
+var template = view("blog/article.html");
+```
 	
 ### Properties
 
@@ -114,7 +124,9 @@ view("page/head.html").render({ title: "My Blog" });
 
 Convert markdown to html
 
-    var html = markdown(document("about.md").content);
+```javascript
+var html = markdown(document("about.md").content);
+```
 	
 Cryonax uses `marked` as default markdown parser. If you want to use your own markdown parser, you'll have to `require` it yourself.  
 Cryonax uses `highlight.js` as syntax highlighter by default.
@@ -127,9 +139,11 @@ Retrieve a summary of a section of html
 - `length` The maximum length of the summary
 - `continuedText` Text to append to the summary if the html was clipped
 
-	var html = markdown(document("about.md").content);
-	var text = summary(html, 10, "[...]");
-	// text = "Lorem ipsum [...]"
+```javascript
+var html = markdown(document("about.md").content);
+var text = summary(html, 10, "[...]");
+// text = "Lorem ipsum [...]"
+```
 
 ## print(text)
 
