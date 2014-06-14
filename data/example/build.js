@@ -7,23 +7,24 @@ var path = require("path");
 
 // render all blog posts
 // this renders "/blog/2014/my-first-entry/index.html"
-var blogPosts = documents().filter(function(doc) { return doc.meta.type == "blog"; })
-blogPosts.forEach(function(doc) {
-	console.log("rendering document", '"' + doc.path + '"');
-	var url = doc.path.replace(/\.[^\.]+$/, "/index.html");
-	var content = view("blog/article.html").render(doc);
-	save(url, content);
-});
+documents()
+	.filter(function(doc) { return doc.meta.type == "blog"; })
+	.forEach(function(doc) {
+		console.log("rendering document", '"' + doc.path + '"');
+		var url = doc.path.replace(/\.[^\.]+$/, "/index.html");
+		var content = view("blog/article.html").render(doc);
+		save(url, content);
+	});
 	
 // render all label pages
 // this renders "/blog/labels/games/index.html"
-var blogLabels = documents()
+documents()
 	.filter(function(doc) { return doc.meta.type == "blog"; })
 	.reduce(function(labels, doc) {
 		var lbls = doc.meta.labels.filter(function(lbl) { return labels.indexOf(lbl) == -1; });
 		return labels.concat(lbls);
-	}, []);
-blogLabels.forEach(function(label) { 
+	}, [])
+	.forEach(function(label) { 
 		console.log("rendering label", '"' + label + '"');
 		var url = "/blog/labels/" + label + "/index.html";
 		var content = view("blog/index-label.html").render(label);

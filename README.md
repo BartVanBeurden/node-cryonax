@@ -1,4 +1,4 @@
-# Install
+# Installation
 
 	npm install cryonax -g
 
@@ -115,6 +115,9 @@ view("page/head.html").render({ title: "My Blog" });
 Convert markdown to html
 
     var html = markdown(document("about.md").content);
+	
+Cryonax uses `marked` as default markdown parser. If you want to use your own markdown parser, you'll have to `require` it yourself.  
+Cryonax uses `highlight.js` as syntax highlighter by default.
 	
 ## summary(html, length, continuedText)
 
