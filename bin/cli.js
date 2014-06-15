@@ -10,7 +10,7 @@ var cryonax = require("../index.js");
 	program
 **/
 program
-	.version("0.1.9")
+	.version("0.1.10")
 	.usage("<command> [options]");
 	
 /**

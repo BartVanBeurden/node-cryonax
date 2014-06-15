@@ -70,7 +70,13 @@ The cryonax build script is named "build.js" and contains instructions to genera
 # API
 
 ## console
+
+Native console functions
+
 ## require()
+
+Native require function
+
 ## document(path)
 
 Retrieve a document by path
