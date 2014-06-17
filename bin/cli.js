@@ -20,10 +20,8 @@ program
 program.command("init")
 	.description("initialize a new website")
 	.option("-o, --output <path>", "Path to the website directory, defaults to .")
-	.action(function() {
-		promptly.prompt("url:", function(url) {
-			cryonax.init(program.output || process.cwd(), url);
-		});
+	.action(function(cmd) {
+		cryonax.init(cmd.output || process.cwd());
 	});
 
 /**
@@ -33,8 +31,8 @@ program.command("init")
 program.command("example")
 	.description("initialize a new example website")
 	.option("-o, --output <path>", "Path to the website directory, defaults to .")
-	.action(function() {
-		cryonax.example(program.output || process.cwd());
+	.action(function(cmd) {
+		cryonax.example(cmd.output || process.cwd());
 	});
 	
 /**
@@ -45,12 +43,12 @@ program.command("build")
 	.description("build a website")
 	.option("-i, --input <path>", "Path to the website directory, defaults to .")
 	.option("-o, --output <path>", "Path to the output directory, defaults to ./out")
-	.option("-url, --url <root>", "Path to the root URL, defaults to /")
-	.action(function() {
+	.option("-u, --url <root>", "Path to the root URL, defaults to /")
+	.action(function(cmd) {
 		cryonax.build(
-			program.input || process.cwd(),
-			program.output || path.join(process.cwd(), "./out"),
-			{ url: program.url || "/" }
+			cmd.input || process.cwd(),
+			cmd.output || path.join(process.cwd(), "./out"),
+			{ url: cmd.url || "/" }
 		);
 	});
 	
@@ -61,11 +59,11 @@ program.command("build")
 program.command("doc")
 	.description("create a new document")
 	.option("-o, --output <path>", "Path to the output directory, defaults to .")
-	.action(function() {
+	.action(function(cmd) {
 		promptly.prompt("name:", function(error, name) {
 		promptly.prompt("type: (blog)", { default: "blog" }, function(error, type) {
 		promptly.prompt("title:", function(error, title) {
-			cryonax.createDocument(program.output || process.cwd(), name, {
+			cryonax.createDocument(cmd.output || process.cwd(), name, {
 				"type": type,
 				"title": title,
 				"date": new Date()
@@ -80,9 +78,9 @@ program.command("doc")
 program.command("view")
 	.description("create a new view")
 	.option("-o, --output <path>", "Path to the output directory, defaults to .")
-	.action(function() {
+	.action(function(cmd) {
 		promptly.prompt("name:", function(error, name) {
-			cryonax.createView(program.output || process.cwd(), name);
+			cryonax.createView(cmd.output || process.cwd(), name);
 		});
 	});
 	
