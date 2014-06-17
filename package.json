@@ -1,6 +1,6 @@
 {
 	"name": "cryonax",
-	"version": "0.1.10",
+	"version": "0.2.11",
 	"description": "static html site generator",
 	"main": "index.js",
 	"bin": {
@@ -15,8 +15,7 @@
 		"marked": "*",
 		"highlight.js": "*",
 		"fs-extra": "*",
-		"require-like": "*",
-		"oo-native-ext": "*"
+		"require-like": "*"
 	},
 	"keywords": [
 		"cryonax",

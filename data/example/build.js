@@ -12,7 +12,7 @@ documents()
 	.forEach(function(doc) {
 		console.log("rendering document", '"' + doc.path + '"');
 		var url = doc.path.replace(/\.[^\.]+$/, "/index.html");
-		var content = view("blog/article.html").render(doc);
+		var content = view("blog/article.page.html").render(doc);
 		save(url, content);
 	});
 	
@@ -27,7 +27,7 @@ documents()
 	.forEach(function(label) { 
 		console.log("rendering label", '"' + label + '"');
 		var url = "/blog/labels/" + label + "/index.html";
-		var content = view("blog/index-label.html").render(label);
+		var content = view("blog/label.page.html").render(label);
 		save(url, content);
 	});
 	
@@ -44,7 +44,7 @@ documents()
 	.forEach(function(docs, year) { 
 		console.log("rendering year", '"' + year + '"');
 		var url = "/blog/" + year + "/index.html";
-		var content = view("blog/index-year.html").render({ year: year, docs: docs });
+		var content = view("blog/year.page.html").render({ year: year, docs: docs });
 		save(url, content);
 	});
 	
@@ -53,11 +53,11 @@ documents()
 	.filter(function(doc) { return doc.meta.type == "static"; })
 	.forEach(function(doc) {
 		var url = "/" + doc.name + "/index.html";
-		var content = view("static.html").render(doc);
+		var content = view("static.page.html").render(doc);
 		save(url, content);
 	});
 
 // render index
 // this renders "/blog/index.html"
-save("/blog/index.html", view("index.html").render());
-save("/index.html", view("index.html").render());
+save("/blog/index.html", view("index.page.html").render());
+save("/index.html", view("index.page.html").render());

@@ -1,0 +1,41 @@
+<%
+	layout("layout.html");
+	
+	var labels = model.meta.labels;
+	var docs = documents()
+		.filter(function(doc) { return doc.meta.type == "blog"; })
+		.sort(function(a, b) { return a.meta.date - b.meta.date; });
+	var next = docs[docs.indexOf(model) + 1];
+	var prev = docs[docs.indexOf(model) - 1];
+	
+%>
+
+<% section("head"); %>
+	<title>My Blog - <% print(model.meta.title); %></title>
+	
+<% section("content"); %>
+	<div class="blog-post">
+		<article>
+			<h1 class="title"><% print(model.meta.title); %></h1>
+			<div class="content"><% print(markdown(model.content)); %></div>
+			<div class="about">
+				<div>
+					Posted by <span class="author"><% print(model.meta.author); %></span>
+					on <% print(view("blog/link-date.html").render(model.meta.date)); %>
+				</div>
+				<div>
+					Labels:
+					<ul class="horizontal labels">
+						<% labels.forEach(function(label) { %>
+							<li><% print(view("blog/link-label.html").render(label)); %></li>
+						<% }); %>
+					</ul>
+				</div>
+			</div>
+		</article>
+		<div class="controls">
+			<% if (prev) { %><a title="<% print(prev.meta.title); %>" href="<% print(url(prev.path.replace(/\..+$/, ""))); %>/">Previous</a><% } %>
+			<a href="<% url("blog/"); %>">Home</a>
+			<% if (next) { %><a title="<% print(next.meta.title); %>" href="<% print(url(next.path.replace(/\..+$/, ""))); %>/">Next</a><% } %>
+		</div>
+	</div>

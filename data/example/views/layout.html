@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link type="text/css" rel="stylesheet" href="<% print(url("css/main.css")); %>">
+		<% print(model.head || ""); %>
+	</head>
+	<body>
+		<% print(view("page/header.html").render()); %>
+		<main><% print(model.content || ""); %></main>
+		<% print(view("page/footer.html").render()); %>
+	</body>
+</html>

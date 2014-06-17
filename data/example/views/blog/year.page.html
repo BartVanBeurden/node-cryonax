@@ -1,0 +1,30 @@
+<%
+	layout("layout.html");
+
+	var docs = model.docs;
+	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var docsByMonth = months.map(function() { return []; });
+	
+	docs.forEach(function(doc) { docsByMonth[doc.meta.date.getMonth()].push(doc); });
+	docsByMonth.forEach(function(list) { list.sort(function(a, b) { return a.meta.date - b.meta.date; }) });
+%>
+
+<% section("head"); %>
+	<title>My Blog - <% print(model.year); %></title>
+	
+<% section("content") %>
+	<div class="blog-year-index">
+		<h1><% print(model.year); %></h1>
+		<ul class="horizontal tiles">
+			<% months.forEach(function(month, index) { %>
+			<li>
+				<h2><% print(month); %></h2>
+				<ul class="no-decoration">
+					<% docsByMonth[index].forEach(function(doc) { %>
+					<li><% print(view("blog/link-article.html").render(doc)); %></li>
+					<% }); %>
+				</ul>
+			</li>
+			<% }); %>
+		</ul>
+	</div>

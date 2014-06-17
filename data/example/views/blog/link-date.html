@@ -1,1 +1,6 @@
-<a href="<% print(url("blog/" + model.format("{yyyy}"))); %>/"><% print(model.format("{dd} {MMMM} {yyyy}")); %></a>
+<%
+	var day = model.getDate();
+	var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][model.getMonth()];
+	var year = model.getFullYear();
+%>
+<a href="<% print(url("blog/" + year)); %>/"><% print(day + " " + month + " " + year); %></a>

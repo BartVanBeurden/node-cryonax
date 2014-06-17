@@ -1,0 +1,10 @@
+<% layout("layout.html"); %>
+
+<% section("head"); %>
+	<title>My Blog - <% print(model.meta.title); %></title>
+	
+<% section("content"); %>
+	<div class="static">
+		<h1><% print(model.meta.title); %></h1>
+		<div class="content"><% print(markdown(model.content)); %></div>
+	</div>
