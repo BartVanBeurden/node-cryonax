@@ -1,6 +1,6 @@
 {
 	"name": "cryonax",
-	"version": "0.2.11",
+	"version": "0.2.12",
 	"description": "static html site generator",
 	"main": "index.js",
 	"bin": {
